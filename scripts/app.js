@@ -26,8 +26,20 @@ form.addEventListener('submit', e => {
             console.log('Not Found', err);
         });
 
+    localStorage.setItem('city', city);
+
     // form.reset();
 });
+
+if(localStorage.getItem('city')) {
+    getDetails(localStorage.getItem('city'))
+    .then(data => {
+        updateUI(data);
+    })
+    .catch(err => {
+        console.log('Not Found', err);
+    });
+}
 
 
 const updateUI = (data) => {
